@@ -1,37 +1,29 @@
-import { createRoot } from "https://cdn.skypack.dev/react-dom@17.0.1";
-
-
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
-
-root.render( /*#__PURE__*/
-React.createElement(StrictMode, null, /*#__PURE__*/
-React.createElement(App, null)));
-
-
-
-import "./styles.css";
-import React, { useEffect, useState } from "https://cdn.skypack.dev/react@17.0.1";
-
+import { useState } from "https://cdn.skypack.dev/react@17.0.1";
 function App() {
-  const [user, setUser] = useState([]);
+  const [team, setTeam] = React.useState([]);
 
   const fetchData = () => {
     return fetch("https://Darlingson.pythonanywhere.com/stats").
     then(response => response.json()).
-    then(data => setUser(data));
+    then(data => setTeam(data));
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchData();
   }, []);
 
   return /*#__PURE__*/(
     React.createElement("main", null, /*#__PURE__*/
-    React.createElement("h1", null, "User List"), /*#__PURE__*/
+    React.createElement("h1", null, "Team List"), /*#__PURE__*/
     React.createElement("ul", null,
-    user && user.length > 0 && user.map((userObj, index) => /*#__PURE__*/
-    React.createElement("li", { key: userObj.id }, userObj.name)))));
+    team && team.length > 0 && team.map((teamObj, index) => /*#__PURE__*/
+    React.createElement("li", { key: teamObj.match_id }, teamObj.Home)))));
+
+
 
 
 }
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+let rootElement = /*#__PURE__*/React.createElement(App, null);
+root.render(rootElement);
