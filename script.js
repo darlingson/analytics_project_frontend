@@ -4,49 +4,49 @@ function App() {
   const [team, setTeam] = React.useState([]);
 
   const fetchData = () => {
-    return fetch("https://Darlingson.pythonanywhere.com/stats")
-      .then((response) => response.json())
-      .then((data) => {
-        setTeam(data);
-      });
+    return fetch("https://Darlingson.pythonanywhere.com/stats").
+    then(response => response.json()).
+    then(data => {
+      setTeam(data);
+    });
   };
 
   React.useEffect(() => {
     fetchData();
   }, []);
 
-  return (
-    <main>
-      <h1>Team List</h1>
-      <ul>
-        {/*team &&
-          team.length > 0 &&
-          team.map((teamObj, index) => (
-            <li key={teamObj.match_id}>{teamObj.Home}</li>
-          ))*/}
+  return /*#__PURE__*/(
+    React.createElement("main", null, /*#__PURE__*/
+    React.createElement("h1", null, "Team List"), /*#__PURE__*/
+    React.createElement("ul", null,
 
-        {team &&
-          team.length > 0 &&
-          team.map((teamObj, index) => (
-            <Team name={teamObj.Home} />
-            //<li key={teamObj.match_id}>{teamObj.Home}</li>
-          ))}
-      </ul>
-    </main>
-  );
+
+
+
+
+
+    team &&
+    team.length > 0 &&
+    team.map((teamObj, index) => /*#__PURE__*/
+    React.createElement(Team, { name: teamObj.Home })
+    //<li key={teamObj.match_id}>{teamObj.Home}</li>
+    ))));
+
+
+
 }
 function Team(props) {
-  return (
-    <>
-      <div className="row">
-        <div className="col s12 m7">
-          <div className="card-panel teal">
-            <span className="white-text">{props.name}</span>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  return /*#__PURE__*/(
+    React.createElement(React.Fragment, null, /*#__PURE__*/
+    React.createElement("div", { className: "row" }, /*#__PURE__*/
+    React.createElement("div", { className: "col s12 m7" }, /*#__PURE__*/
+    React.createElement("div", { className: "card-panel teal" }, /*#__PURE__*/
+    React.createElement("span", { className: "white-text" }, props.name))))));
+
+
+
+
+
 }
 
 function GoalsChart() {
@@ -55,47 +55,47 @@ function GoalsChart() {
     fetchData();
   }, []);
   const fetchData = () => {
-    return fetch("https://Darlingson.pythonanywhere.com/stats")
-      .then((response) => response.json())
-      .then((data) => {
-        const avgGoals = [];
-        const homeGoals = [];
-        const awayGoals = [];
+    return fetch("https://Darlingson.pythonanywhere.com/stats").
+    then(response => response.json()).
+    then(data => {
+      const avgGoals = [];
+      const homeGoals = [];
+      const awayGoals = [];
 
-        for (let i = 0; i < data.length; i++) {
-          homeGoals.push(data[i].Home_Goal);
-          awayGoals.push(data[i].Away_Goal);
-        }
+      for (let i = 0; i < data.length; i++) {
+        homeGoals.push(data[i].Home_Goal);
+        awayGoals.push(data[i].Away_Goal);
+      }
 
-        const TotalGoalsPerGame = data.map(
-          (game, index) => game.Home_Goal + game.Away_Goal
-        );
-        const avgGPG =
-          TotalGoalsPerGame.reduce((x, y) => x + y) / TotalGoalsPerGame.length;
-        const avgHG = homeGoals.reduce((x, y) => x + y) / homeGoals.length;
-        const avgAG = awayGoals.reduce((x, y) => x + y) / awayGoals.length;
-        avgGoals.push(avgGPG);
-        avgGoals.push(avgHG);
-        avgGoals.push(avgAG);
-        sethomegoalData(avgGoals);
-      });
+      const TotalGoalsPerGame = data.map(
+      (game, index) => game.Home_Goal + game.Away_Goal);
+
+      const avgGPG =
+      TotalGoalsPerGame.reduce((x, y) => x + y) / TotalGoalsPerGame.length;
+      const avgHG = homeGoals.reduce((x, y) => x + y) / homeGoals.length;
+      const avgAG = awayGoals.reduce((x, y) => x + y) / awayGoals.length;
+      avgGoals.push(avgGPG);
+      avgGoals.push(avgHG);
+      avgGoals.push(avgAG);
+      sethomegoalData(avgGoals);
+    });
   };
-  return (
-    <>
-      <div>hi</div>
-      <div>{homegoalData}</div>
-    </>
-  );
+  return /*#__PURE__*/(
+    React.createElement(React.Fragment, null, /*#__PURE__*/
+    React.createElement("div", null, "hi"), /*#__PURE__*/
+    React.createElement("div", null, homegoalData)));
+
+
 }
 function RootApp() {
-  return (
-    <>
-      <App />
-      <GoalsChart />
-    </>
-  );
+  return /*#__PURE__*/(
+    React.createElement(React.Fragment, null, /*#__PURE__*/
+    React.createElement(App, null), /*#__PURE__*/
+    React.createElement(GoalsChart, null)));
+
+
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-let rootElement = <RootApp />;
+let rootElement = /*#__PURE__*/React.createElement(RootApp, null);
 root.render(rootElement);
