@@ -1,0 +1,6 @@
+.hidenTeams {
+  display: block;
+}
+.revealedTeams {
+  display: hidden;
+}
