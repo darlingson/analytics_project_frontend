@@ -75,10 +75,10 @@ function GoalsChart() {
       const homeGoals = [];
       const awayGoals = [];
 
-      for (let i = 0; i < data.length; i++) {if (window.CP.shouldStopExecution(0)) break;
+      for (let i = 0; i < data.length; i++) {
         homeGoals.push(data[i].Home_Goal);
         awayGoals.push(data[i].Away_Goal);
-      }window.CP.exitedLoop(0);
+      }
 
       const TotalGoalsPerGame = data.map(
       (game, index) => game.Home_Goal + game.Away_Goal);
@@ -147,11 +147,11 @@ function RenderGoalsChart() {
 
       const awayGoals = [];
 
-      for (let i = 0; i < data.length; i++) {if (window.CP.shouldStopExecution(1)) break;
+      for (let i = 0; i < data.length; i++) {
         homeGoals.push(data[i].Home_Goal);
 
         awayGoals.push(data[i].Away_Goal);
-      }window.CP.exitedLoop(1);
+      }
 
       const TotalGoalsPerGame = data.map(
       (game, index) => game.Home_Goal + game.Away_Goal);
